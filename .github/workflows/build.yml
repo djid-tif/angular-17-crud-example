@@ -24,3 +24,8 @@ jobs:
       #   timeout-minutes: 5
       #   env:
       #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: Install SonarQube Scanner
+        run: npm install -g sonar-scanner
+      - name: SonarQube Scan
+        run: sonar-scanner -Dsonar.projectKey=jallain-ynov-frontend -Dsonar.host.url=https://sonarqube-coe.westeuro -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+  
