@@ -22,6 +22,9 @@ jobs:
           env:
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
             SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        - name: Set Permissions
+          run: sudo chmod -R 777 /home/runner/work/angular-17-crud-example/angular-17-crud-example/.scannerwork
+          
         - name: Install SonarQube Scanner
           run: npm install -g sonar-scanner
         - name: SonarQube Scan
