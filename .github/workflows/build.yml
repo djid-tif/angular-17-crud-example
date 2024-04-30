@@ -27,5 +27,5 @@ jobs:
       - name: Install SonarQube Scanner
         run: npm install -g sonar-scanner
       - name: SonarQube Scan
-        run: sonar-scanner -Dsonar.projectKey=jallain-ynov-frontend -Dsonar.host.url=https://sonarqube-coe.westeuro -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+        run: sonar-scanner -Dsonar.projectKey=ltifour-ynov-frontend -Dsonar.projectName=ltifour-ynov-frontend -Dsonar.host.url=https://sonarqube-coe.westeurope.cloudapp.azure.com -Dsonar.login=${{ secrets.SONAR_TOKEN }}
   
