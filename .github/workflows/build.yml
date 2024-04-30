@@ -24,8 +24,15 @@ jobs:
             SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         - name: Set Permissions
           run: sudo chmod -R 777 /home/runner/work/angular-17-crud-example/angular-17-crud-example/.scannerwork
-          
         - name: Install SonarQube Scanner
           run: npm install -g sonar-scanner
         - name: SonarQube Scan
-          run: sonar-scanner -Dsonar.projectKey=ltifour-ynov-frontend -Dsonar.projectName=ltifour-ynov-frontend -Dsonar.host.url=https://sonarqube-coe.westeurope.cloudapp.azure.com -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+          run: sudo sonar-scanner -Dsonar.projectKey=ltifour-ynov-frontend -Dsonar.projectName=ltifour-ynov-frontend -Dsonar.host.url=https://sonarqube-coe.westeurope.cloudapp.azure.com -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+        - name: Install Dependencies
+          run: npm ci
+        - name: Run tests with coverage
+          run: npm test
+        - uses: sonarsource/sonarqube-scan-action@master
+          env:
+            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+            SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
